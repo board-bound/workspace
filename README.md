@@ -3,36 +3,67 @@
 This is a pre-configured workspace, including launch scripts to
 automatically rebuild plugins or the server when changes are made.
 
-## Usage
+## Installing and Setting Up the Development Environment
 
-Install dependencies:
+### Step 1: Install Dependencies
+
+Run the following command to install dependencies:
 
 ```bash
 pnpm install
 ```
 
-Clone any plugin repository based on the
+On the initial run, this command will also clone the
+[`@board-bound/server`](https://github.com/board-bound/server) and
+[`@board-bound/sdk`](https://github.com/board-bound/sdk) repositories and install their respective dependencies.
+
+### Step 2: Configure `config.json`
+
+After the first installation, you can modify the `config.json` file to specify which projects should be automatically updated during subsequent `pnpm install` executions. Typically, this includes only the `@board-bound/server` and `@board-bound/sdk` projects.
+
+**Important:** It is strongly recommended to disable automatic updates while making changes to files within any project to avoid unintended overwrites.
+
+### Step 3: Clone or Create a Plugin
+
+Clone any repository based on the
 [`@board-bound/example`](https://github.com/board-bound/example)
-repository:
+in to the root of the workspace:
 
 ```bash
 git clone git@github.com:board-bound/example.git
 ```
 
-Or create a new plugin from scratch, by copying the
-[`@board-bound/example`](https://github.com/board-bound/example)
-repository, by clicking
-[here](https://github.com/new?template_name=example&template_owner=board-bound)
+Alternatively, you can create a new plugin from scratch by copying the
+[`@board-bound/example`](https://github.com/board-bound/example) repository. Use the provided [template link](https://github.com/new?template_name=example&template_owner=board-bound) to get started.
 
-Run the dev workspace:
+### Step 4: Enable Development Environment Linking
+
+To enable or disable development environment linking, use:
+
+```bash
+# Enable linking
+pnpm enable-dev
+
+# Check if dev mode is enabled
+pnpm is-dev-enabled
+
+# Disable linking
+pnpm disable-dev
+```
+
+This feature resolves dependencies within the local workspace and links packages automatically, ensuring that TypeScript correctly resolves imports.
+
+**Note:** After adding a new plugin to the workspace, you must run `pnpm enable-dev` again to link the new plugin.
+
+### Step 5: Start the Development Workspace
+
+Run the development workspace with automatic rebuild functionality:
 
 ```bash
 pnpm dev
 ```
 
-What this will do:
- - Watch for changes and rebuild the server if necessary
- - 
+This setup will monitor changes and rebuild the project automatically.
 
 ## License
 

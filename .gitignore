@@ -1,0 +1,9 @@
+/**
+!/.vscode/
+!/.vscode/*
+!/.vscode/**
+!/package.json
+!/pnpm-lock.yaml
+!/README.md
+!/LICENSE
+!/.gitignore
